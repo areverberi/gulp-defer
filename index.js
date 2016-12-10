@@ -8,7 +8,7 @@ var deferTemplate =
     'var d = b.createElement("script"), e = a[c]; d.src = e.src, d.async = e.async, ' +
     'b.body.appendChild(d) } return !0 }; var e = function (a) { if ("[object Array]" ' +
     '!== Object.prototype.toString.call(a))return !1; for (var c = 0; c < a.length; c++) { ' +
-    'var d = document.createElement("link"), e = a[c]; d.rel = "stylesheet", d.href = e.href, ' +
+    'var d = document.createElement("link"), e = a[c]; d.rel = "stylesheet", d.href = e.href; ' +
     'var t = document.getElementById("deferscript"); t.parentNode.insertBefore(d, t); } return !0 }; a.addEventListener ? ' +
     'a.addEventListener("load", function () { d(c.scripts); e(c.styles); }, !1) : a.attachEvent ? ' +
     'a.attachEvent("onload", function () { d(c.scripts); e(c.styles); }) : a.onload = function () { ' +
