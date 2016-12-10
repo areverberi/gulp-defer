@@ -9,7 +9,7 @@ var deferTemplate =
     'b.body.appendChild(d) } return !0 }; var e = function (a) { if ("[object Array]" ' +
     '!== Object.prototype.toString.call(a))return !1; for (var c = 0; c < a.length; c++) { ' +
     'var d = document.createElement("link"), e = a[c]; d.rel = "stylesheet", d.href = e.href, ' +
-    'document.getElementsByTagName("head")[0].appendChild(d); } return !0 }; a.addEventListener ? ' +
+    'document.getElementsByTagName("body")[0].appendChild(d); } return !0 }; a.addEventListener ? ' +
     'a.addEventListener("load", function () { d(c.scripts); e(c.styles); }, !1) : a.attachEvent ? ' +
     'a.attachEvent("onload", function () { d(c.scripts); e(c.styles); }) : a.onload = function () { ' +
     'd(c.scripts); e(c.styles); } }(window, document, %RESOURCES%);</script>\n';
@@ -38,6 +38,7 @@ module.exports = function () {
 
 function processFile(content) {
     var deferBlockRx = /<!--defer-->([\s\S]*?)<!--enddefer-->/g,
+        deferInjectBlockRx = /<!--deferinject-->([\s\S]*?)<!--enddeferinject-->/g,
         scriptRx = /script.*?src=["'](.*?)["']/g,
         styleRx = /link.*?href=["'](.*?)["']/g,
         bodyRx = /<\/body>/;
@@ -70,6 +71,6 @@ function processFile(content) {
     }
 
     var deferFnText = deferTemplate.replace('%RESOURCES%', JSON.stringify({scripts: scripts, styles: styles}));
-    return content.replace(bodyRx, deferFnText + '</body>').replace(deferBlockRx, '');
+    return content.replace(deferInjectBlockRx, deferFnText).replace(deferBlockRx, '');
 }
 
