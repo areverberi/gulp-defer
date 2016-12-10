@@ -2,10 +2,10 @@ var es = require('event-stream'),
     gutil = require('gulp-util');
 
 var deferTemplate =
-    '\t<script type="text/javascript">' +
+    '\t<script type="text/javascript" id="deferscript">' +
     '!function (a, b, c) { "use strict"; var d = function (a) { if ("[object Array]" !== ' +
     'Object.prototype.toString.call(a))return !1; for (var c = 0; c < a.length; c++) { ' +
-    'var d = b.createElement("script"), e = a[c]; d.id="deferscript", d.src = e.src, d.async = e.async, ' +
+    'var d = b.createElement("script"), e = a[c]; d.src = e.src, d.async = e.async, ' +
     'b.body.appendChild(d) } return !0 }; var e = function (a) { if ("[object Array]" ' +
     '!== Object.prototype.toString.call(a))return !1; for (var c = 0; c < a.length; c++) { ' +
     'var d = document.createElement("link"), e = a[c]; d.rel = "stylesheet", d.href = e.href, ' +
