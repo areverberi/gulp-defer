@@ -9,10 +9,10 @@ var deferTemplate =
     'b.body.appendChild(d) } return !0 }; var e = function (a) { if ("[object Array]" ' +
     '!== Object.prototype.toString.call(a))return !1; for (var c = 0; c < a.length; c++) { ' +
     'var d = document.createElement("link"), e = a[c]; d.rel = "stylesheet", d.href = e.href; ' +
-    'var t = document.getElementById("deferscript"); t.parentNode.insertBefore(d, t); } return !0 }; a.addEventListener ? ' +
-    'a.addEventListener("load", function () { d(c.scripts); e(c.styles); }, !1) : a.attachEvent ? ' +
-    'a.attachEvent("onload", function () { d(c.scripts); e(c.styles); }) : a.onload = function () { ' +
-    'd(c.scripts); e(c.styles); } }(window, document, %RESOURCES%);</script>\n';
+    'var t = document.getElementById("deferscript"); document.body.appendChild(d); } return !0 }; a.addEventListener ? ' +
+    'a.addEventListener("load", function () { e(c.styles); d(c.scripts); }, !1) : a.attachEvent ? ' +
+    'a.attachEvent("onload", function () { e(c.styles); d(c.scripts); }) : a.onload = function () { ' +
+    'e(c.styles); d(c.scripts); } }(window, document, %RESOURCES%);</script>\n';
 
 module.exports = function () {
 
